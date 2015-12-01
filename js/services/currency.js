@@ -15,7 +15,7 @@ app
       name: 'Indian Rupee (₹)',
       symbol: '₹'
     }, {
-      name: 'Norwegian krone (kr)',
+      name: 'Norwegian kroner (kr)',
       symbol: 'kr '
     }, {
       name: 'US Dollar ($)',

@@ -26,13 +26,11 @@ app
     };
 
   
-
-    // Clears a stored invoice
     Service.clearinvoice = function () {
       localStorage['invoice'] = '';
     };
 
-    // Clears all local storage
+    
     Service.clear = function () {
       localStorage['invoice'] = '';
 
