@@ -9,12 +9,6 @@ app
       name: 'Canadian Dollar ($)',
       symbol: 'CAD $ '
     }, {
-      name: 'Euro (€)',
-      symbol: '€'
-    }, {
-      name: 'Indian Rupee (₹)',
-      symbol: '₹'
-    }, {
       name: 'Norwegian kroner (kr)',
       symbol: 'kr '
     }, {

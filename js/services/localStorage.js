@@ -6,7 +6,7 @@ app
 
     var Service = {};
 
-
+// invoices auto saved in local storage.  
 
     var hasInvoice = function () {
       return !(localStorage['invoice'] === '' || localStorage['invoice'] === null);

@@ -13,7 +13,12 @@
 </head>
 
 <body ng-app="invoiceApp" ng-controller="InvoiceCtrl">
-    <div class="container" width="800px" id="invoice">
+    <div class="row">
+        <div class="col-xs-12 heading">
+            <button class="btn btn-primary" ng-click="createInvoice()" ng-hide="show">Create Invoice</button>
+        </div>
+    </div>
+    <div ng-show="show" class="container" width="800px" id="invoice">
         <div class="row">
             <div class="col-xs-12 heading">
                 Invoice App
@@ -69,23 +74,24 @@
         <div class="items-table">
             <div class="row header">
                 <div class="col-xs-1">&nbsp;</div>
-                <div class="col-xs-5">Description</div>
+                <div class="col-xs-5">Product Name</div>
                 <div class="col-xs-2">Quantity</div>
-                <div class="col-xs-2">Cost {{currencySymbol}}</div>
+                <div class="col-xs-2">Price</div>
                 <div class="col-xs-2 text-right">Total</div>
             </div>
-            <div class="row invoice-item" ng-repeat="item in invoice.items" ng-animate="'slide-down'">
-                <div class="col-xs-1 remove-item-container">
-                    <a href ng-click="removeItem(item)" class="btn btn-danger">[X]</a>
+            <div class="row invoice-item" ng-repeat="item in invoice.items track by $index">
+                <div class="col-xs-1">
+                    <a href ng-click="removeItem(item)" class="btn btn-danger">X</a>
                 </div>
                 <div class="col-xs-5 input-container">
-                    <input ng-model="item.description" placeholder="Description" />
+                    <!-- <input ng-model="item.description" placeholder="Description" /> -->
+                    <select ng-model='item.description' ng-options='items.description as item.name for item in availableItems'></select>
                 </div>
                 <div class="col-xs-2 input-container">
-                    <input ng-model="item.qty" value="1" size="4" ng-required ng-validate="integer" placeholder="Quantity" />
+                    <input ng-model="item.qty" ng-required value="1" size="4" placeholder="Quantity" />
                 </div>
                 <div class="col-xs-2 input-container">
-                    <input ng-model="item.cost" value="0.00" ng-required ng-validate="number" size="6" placeholder="Cost" />
+                    <input ng-model="item.cost" value="0.00" size="6" ng-required placeholder="Cost" />
                 </div>
                 <div class="col-xs-2 text-right input-container">
                     {{item.cost * item.qty | currency: currencySymbol}}
@@ -93,7 +99,7 @@
             </div>
             <div class="row invoice-item">
                 <div class="col-xs-12 add-item-container">
-                    <a class="btn btn-primary" href ng-click="addItem()">[+]</a>
+                    <a class="btn btn-primary" href ng-click="addItem()">+</a>
                 </div>
             </div>
             <div class="row">
@@ -102,7 +108,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-10 text-right">Tax(%):
-                    <input ng-model="invoice.tax" ng-validate="number" style="width:43px">
+                    <input ng-model="invoice.tax" style="width:43px">
                 </div>
                 <div class="col-xs-2 text-right">{{calculateTax() | currency: currencySymbol}}</div>
             </div>

@@ -21,14 +21,31 @@ app
     $scope.currencySymbol = '$';
     $scope.availableCurrencies = Currency.all();
 
+    $scope.availableItems = [{
+      name: "Basic Plan"
+    }, {
+      name: "Professional Plan"
+    }, {
+      name: "Enterprise"
+    }, {
+      name: "Custom"
+    }, {
+      name: "Consulting"
+    }, {
+      name: "Analytics"
+    }];
+    $scope.show = false;
 
+    $scope.createInvoice = function () {
+      $scope.show = true;
+    };
 
     $scope.removeItem = function (item) {
       $scope.invoice.items.splice($scope.invoice.items.indexOf(item), 1);
     };
 
 
-   var invoiceSubTotal = function () {
+    var invoiceSubTotal = function () {
       var total = 0.00;
       angular.forEach($scope.invoice.items, function (item) {
         total += (item.qty * item.cost);
@@ -41,17 +58,18 @@ app
       return (($scope.invoice.tax * invoiceSubTotal()) / 100);
     };
 
-    
+
     $scope.calculateGrandTotal = function () {
       saveInvoice();
       return calculateTax() + invoiceSubTotal();
     };
 
-  
+
     $scope.clearLocalStorage = function () {
       var confirmClear = confirm('Are you sure you would like to delete the invoice?');
       if (confirmClear) {
         LocalStorage.clear();
+        $scope.invoice.items = [];
         setInvoice(defaultInvoice);
       }
     };
