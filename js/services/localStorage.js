@@ -25,10 +25,7 @@ app
       localStorage['invoice'] = JSON.stringify(invoice);
     };
 
-    // Clears a stored logo
-    Service.clearLogo = function () {
-      localStorage['logo'] = '';
-    };
+  
 
     // Clears a stored invoice
     Service.clearinvoice = function () {
@@ -38,7 +35,7 @@ app
     // Clears all local storage
     Service.clear = function () {
       localStorage['invoice'] = '';
-      Service.clearLogo();
+
     };
 
     return Service;
