@@ -20,6 +20,6 @@ app
     zipcode: '94402'
   },
   items:[
-    { qty: 12, description: 'Marketing Bundle', cost: 12.00 }
+    
   ]
 });

@@ -3,10 +3,10 @@ app
 .controller('InvoiceCtrl', ['$scope', '$http', 'defaultInvoice', 'LocalStorage', 'Currency',
   function ($scope, $http, defaultInvoice, LocalStorage, Currency) {
 
-    // Set defaults
     $scope.currencySymbol = '$';
 
     var invoice = LocalStorage.getInvoice();
+
     $scope.invoice = invoice ? invoice : defaultInvoice;
 
 
@@ -28,23 +28,23 @@ app
     };
 
 
-    $scope.invoiceSubTotal = function () {
+   var invoiceSubTotal = function () {
       var total = 0.00;
-      angular.forEach($scope.invoice.items, function (item, key) {
+      angular.forEach($scope.invoice.items, function (item) {
         total += (item.qty * item.cost);
       });
       return total;
     };
 
 
-    $scope.calculateTax = function () {
-      return (($scope.invoice.tax * $scope.invoiceSubTotal()) / 100);
+    var calculateTax = function () {
+      return (($scope.invoice.tax * invoiceSubTotal()) / 100);
     };
 
     // Calculates the grand total of the invoice
     $scope.calculateGrandTotal = function () {
       saveInvoice();
-      return $scope.calculateTax() + $scope.invoiceSubTotal();
+      return calculateTax() + invoiceSubTotal();
     };
 
     // Clears the local storage
@@ -68,13 +68,6 @@ app
       LocalStorage.setInvoice($scope.invoice);
     };
 
-    // Runs on document.ready
-    angular.element(document).ready(function () {
-      // Set focus
-      document.getElementById('invoice-number').focus();
-
-
-    });
 
   }
 ]);
