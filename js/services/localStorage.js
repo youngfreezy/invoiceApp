@@ -15,10 +15,12 @@ app
     // Returns a stored invoice (false if none is stored)
     Service.getInvoice = function () {
       if (hasInvoice()) {
-        return JSON.parse(localStorage['invoice']);
-      } else {
-        return false;
+        //for incognito mode and safari
+        if (localStorage['invoice']) {
+          return JSON.parse(localStorage['invoice']);
+        }
       }
+      return false;
     };
 
     Service.setInvoice = function (invoice) {
