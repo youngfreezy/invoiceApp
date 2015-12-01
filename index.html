@@ -84,7 +84,6 @@
                     <a href ng-click="removeItem(item)" class="btn btn-danger">X</a>
                 </div>
                 <div class="col-xs-5 input-container">
-                    <!-- <input ng-model="item.description" placeholder="Description" /> -->
                     <select ng-model='item.description' ng-options='items.description as item.name for item in availableItems'></select>
                 </div>
                 <div class="col-xs-2 input-container">

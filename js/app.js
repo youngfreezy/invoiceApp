@@ -8,7 +8,7 @@ app
   customer_info: {
     name: 'Acme Paper Company',
     web_link: 'www.acme.com',
-    address1: '1 Infinite Loop',
+    address1: '9506 Old Georgetown Road',
     address2: 'Bethesda, MD, US',
     zipcode: '20814'
   },
@@ -19,7 +19,7 @@ app
     address2: 'San Mateo, CA',
     zipcode: '94402'
   },
-  items:[
-     // { qty: 12, description: 'Marketing Bundle', cost: 12.00 }
+  items: [
+    // { qty: 12, description: 'Marketing Bundle', cost: 12.00 }
   ]
 });

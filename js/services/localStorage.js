@@ -6,7 +6,7 @@ app
 
     var Service = {};
 
-// invoices auto saved in local storage.  
+    // invoices auto saved in local storage.  
 
     var hasInvoice = function () {
       return !(localStorage['invoice'] === '' || localStorage['invoice'] === null);
@@ -25,12 +25,12 @@ app
       localStorage['invoice'] = JSON.stringify(invoice);
     };
 
-  
+
     Service.clearinvoice = function () {
       localStorage['invoice'] = '';
     };
 
-    
+
     Service.clear = function () {
       localStorage['invoice'] = '';
 
