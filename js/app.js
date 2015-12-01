@@ -1,4 +1,4 @@
-var app = angular.module('invoicing', []);
+var app = angular.module('invoiceApp', []);
 app
 
 
